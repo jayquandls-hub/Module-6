@@ -8,6 +8,10 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 }
 
 $id = $_GET['id'];
+if(!isset($_SESSION['user']['id']) || $_SESSION['user']['id'] != $id) {
+    header("location: transacties.php?id=" . $_SESSION['user']['id']);
+    exit;
+}
 
 // Gebruikersgegevens ophalen
 $stmt = $pdo->prepare("SELECT * FROM user WHERE id = ?");
