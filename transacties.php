@@ -20,12 +20,12 @@ $stmt->execute([$id]);
 $user = $stmt->fetch();
 
 // Uitgaande transacties ophalen
-$stmt = $pdo->prepare("SELECT * FROM 'transaction' WHERE sender = ?");
+$stmt = $pdo->prepare("SELECT * FROM transaction WHERE sender = ?");
 $stmt->execute([$id]);
 $outgoingTransactions = $stmt->fetchAll();
 
 // Inkomende transacties ophalen
-$stmt = $pdo->prepare("SELECT * FROM 'transaction' WHERE receiver = ?");
+$stmt = $pdo->prepare("SELECT * FROM transaction WHERE receiver = ?");
 $stmt->execute([$id]);
 $incomingTransactions = $stmt->fetchAll();
 ?>
